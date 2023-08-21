@@ -8,4 +8,6 @@ router.get("/registration", userController.registrationPage);
 
 router.get("/login", userController.homePage);
 
+router.get("/create", userController.createUser);
+
 module.exports = router;

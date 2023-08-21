@@ -17,3 +17,22 @@ module.exports.homePage = function (req, res) {
     });
   }
 };
+
+const User = require("../models/user");
+
+module.exports.createUser = async function (req, res) {
+  try {
+    const newUser = new User({
+      name: "john_doe",
+      email: "john@example.com",
+      password: "password123",
+    });
+
+    await newUser.save();
+
+    res.status(201).json(newUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};

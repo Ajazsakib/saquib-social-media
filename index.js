@@ -1,7 +1,10 @@
 const express = require("express");
+const db = require("./config/mongoose");
 
 const app = express();
 const port = 5000;
+
+app.use(express.urlencoded({ extended: true }));
 
 // set up the view engine
 app.set("view engine", "ejs");
