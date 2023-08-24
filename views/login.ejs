@@ -1,11 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title%></title>
-  </head>
-  <body>
-    <h1>Login Page</h1>
+
+
+    <section class="main-box">
+      <div class="form-box">
+        <div class="main-heading">Login Page</div>
+        <form action="/user/createSession" method="POST">
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              type="text"
+              class="form-control"
+              name="email"
+              placeholder="Enter password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              placeholder="Enter password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-submit" value="Submit" />
+          </div>
+          <a href="/user/registration" class="change-form">Go To Registration</a>
+        </form>
+      </div>
+    </section>
   </body>
 </html>
