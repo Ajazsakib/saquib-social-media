@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const multer = require('multer');
+const multer = require("multer");
 
-const path = require('path');
+const path = require("path");
 
-const AVATAR_PATH = path.join('/uploads/users');
+const AVATAR_PATH = path.join("/uploads/users");
 
 const userSchema = new mongoose.Schema(
   {
@@ -25,9 +25,13 @@ const userSchema = new mongoose.Schema(
       type: String,
     },
     // other user-related fields
-    friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-    friendRequests: [
-      { type: mongoose.Schema.Types.ObjectId, ref: 'FriendRequest' },
+    friends: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    friendRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    friendRequestsSent: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
     ],
   },
   {
@@ -37,21 +41,21 @@ const userSchema = new mongoose.Schema(
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '..', AVATAR_PATH));
+    cb(null, path.join(__dirname, "..", AVATAR_PATH));
   },
   filename: function (req, file, cb) {
     // const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    cb(null, file.fieldname + '-' + Date.now() + '.png');
+    cb(null, file.fieldname + "-" + Date.now() + ".png");
   },
 });
 
 // static methods
 userSchema.statics.uploadedAvatar = multer({ storage: storage }).single(
-  'profile_pic'
+  "profile_pic"
 );
 
 userSchema.statics.avatarPath = AVATAR_PATH;
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;

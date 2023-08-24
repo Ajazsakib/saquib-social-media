@@ -1,8 +1,8 @@
-const userService = require('../services/userServices');
+const userService = require("../services/userServices");
 
 module.exports.registrationPage = function (req, res) {
-  return res.render('registration', {
-    title: 'Saquib Social Media',
+  return res.render("registration", {
+    title: "Saquib Social Media",
   });
 };
 
@@ -10,14 +10,14 @@ var login = false;
 
 module.exports.homePage = function (req, res) {
   if (req.isAuthenticated()) {
-    return res.render('index', {
-      title: 'Saquib Social Media',
+    return res.render("index", {
+      title: "Saquib Social Media",
       user: req.user,
-      searchValue: '',
+      searchValue: "",
     });
   } else {
-    return res.render('login', {
-      title: 'Saquib Social Media',
+    return res.render("login", {
+      title: "Saquib Social Media",
     });
   }
 };
@@ -25,15 +25,15 @@ module.exports.homePage = function (req, res) {
 module.exports.createUser = async function (req, res) {
   try {
     await userService.createUser(req, res);
-    return res.redirect('/');
+    return res.redirect("/");
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server error' });
+    res.status(500).json({ error: "Server error" });
   }
 };
 
 module.exports.login = function (req, res) {
-  return res.redirect('/');
+  return res.redirect("/");
 };
 
 module.exports.logout = function (req, res, next) {
@@ -41,18 +41,18 @@ module.exports.logout = function (req, res, next) {
     if (err) {
       return next(err);
     }
-    res.redirect('/');
+    res.redirect("/");
   });
 };
 
-const User = require('../models/user');
-const FriendRequest = require('../models/friendRequestSchema');
+const User = require("../models/user");
+const FriendRequest = require("../models/friendRequestSchema");
 
 module.exports.showAllUsers = async function (req, res) {
   let users = await User.find({});
-  console.log('testttttttttttttttttttttttt');
-  return res.render('allUsers', {
-    title: 'Saquib Social Media',
+  console.log("testttttttttttttttttttttttt");
+  return res.render("allUsers", {
+    title: "Saquib Social Media",
     users: users,
     currentUser: req.user,
   });
@@ -68,17 +68,24 @@ module.exports.sendFriendRequest = async function (req, res) {
     const newRequest = new FriendRequest({
       sender: senderId,
       receiver: receiverId,
-      status: 'pending',
+      status: "pending",
     });
     await newRequest.save();
 
     // Update the recipient's friendRequests array
     receiverUser.friendRequests.push(newRequest._id);
-
+    senderUser.friendRequestsSent.push(receiverUser._id);
     await receiverUser.save();
+    await senderUser.save();
 
-    res.redirect('/user/all_users');
+    res.redirect("/user/all_users");
   } catch (error) {
-    res.status(500).json({ error: 'An error occurred.' });
+    res.status(500).json({ error: "An error occurred." });
   }
+};
+
+module.exports.friends = function (req, res) {
+  res.render("friends", {
+    title: "Saquib Social Media",
+  });
 };

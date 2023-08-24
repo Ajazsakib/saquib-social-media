@@ -1,39 +1,39 @@
-const express = require('express');
+const express = require("express");
 
 const router = express.Router();
 
-const passport = require('passport');
+const passport = require("passport");
 
-const userController = require('../controllers/userController');
+const userController = require("../controllers/userController");
 
-const User = require('../models/user');
+const User = require("../models/user");
 
-router.get('/registration', userController.registrationPage);
+router.get("/registration", userController.registrationPage);
 
-router.get('/login', userController.homePage);
+router.get("/login", userController.homePage);
 
-router.post('/create', userController.createUser);
+router.post("/create", userController.createUser);
 
 router.post(
-  '/createSession',
-  passport.authenticate('local', { failureRedirect: '/login' }),
+  "/createSession",
+  passport.authenticate("local", { failureRedirect: "/login" }),
   userController.login
 );
 
-router.get('/logout', userController.logout);
+router.get("/logout", userController.logout);
 
-router.get('/all_users', userController.showAllUsers);
+router.get("/all_users", userController.showAllUsers);
 
-router.get('/all_users/search', async (req, res) => {
+router.get("/all_users/search", async (req, res) => {
   const searchQuery = req.query.query;
 
   try {
     const users = await User.find({
-      name: { $regex: new RegExp(searchQuery, 'i') }, // Case-insensitive search
+      name: { $regex: new RegExp(searchQuery, "i") }, // Case-insensitive search
     });
 
-    return res.render('allUsers', {
-      title: 'Saquib Social Media',
+    return res.render("allUsers", {
+      title: "Saquib Social Media",
       users: users,
       searchValue: searchQuery,
       currentUser: req.user,
@@ -43,6 +43,8 @@ router.get('/all_users/search', async (req, res) => {
   }
 });
 
-router.post('/send-friend-request', userController.sendFriendRequest);
+router.post("/send-friend-request", userController.sendFriendRequest);
+
+router.get("/friends", userController.friends);
 
 module.exports = router;

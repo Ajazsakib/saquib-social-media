@@ -21,9 +21,15 @@
             hidden
           />
           <input type="text" name="receiverId" value="<%=user._id%>" hidden />
+          <% if(currentUser.friendRequestsSent.includes(user._id)) { %>
+          <button type="submit" class="btn btn-logout" disabled>
+            <span class="material-symbols-outlined"> person_add </span>Pending
+          </button>
+          <%} else {%>
           <button type="submit" class="btn btn-tranaparent">
             <span class="material-symbols-outlined"> person_add </span>Connect
           </button>
+          <% } %>
         </form>
       </div>
       <div class="cross">
