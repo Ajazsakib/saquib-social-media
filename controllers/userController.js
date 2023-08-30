@@ -84,8 +84,51 @@ module.exports.sendFriendRequest = async function (req, res) {
   }
 };
 
-module.exports.friends = function (req, res) {
-  res.render("friends", {
+module.exports.friends = async function (req, res)
+{
+  const friendRequests = await FriendRequest.find({ _id: { $in: req.user.friendRequests } });
+
+  
+  let allSenders = []
+
+  for (let request of friendRequests) {
+    const sender = await User.findById(request.sender) 
+    allSenders.push(sender)
+  }
+
+  const user = await User.findById(req.user._id).populate("friends").exec()
+  
+  res.render("myFriends", {
     title: "Saquib Social Media",
+    senders: allSenders,
+    friends: user.friends,
   });
 };
+
+module.exports.acceptFriendRequest = async function (req, res)
+{
+ 
+  const friend = await User.findById(req.params.id)
+  const user = await User.findById(req.user._id)
+
+  user.friends.push(friend._id)
+
+  friend.friends.push(user._id)
+
+  await FriendRequest.updateOne({sender: friend._id, receiver: user._id},{ $set: { status: 'accepted' } },)
+
+  console.log(user.friendRequests, "friendrequest")
+  console.log(friend._id, "friend_id")
+  
+
+
+
+  await user.save()
+
+  res.redirect("back")
+
+  
+
+
+  
+}

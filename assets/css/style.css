@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,8 +6,8 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-font-family: 'Roboto Condensed', sans-serif;
-background-color: #f3f2f0;
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: #f3f2f0;
 }
 
 .btn {
@@ -33,7 +33,7 @@ background-color: #f3f2f0;
     align-items: center;
 }
 
-.change-form  {
+.change-form {
     text-decoration: none;
     font-weight: 500;
     color: #1877f2;
@@ -48,6 +48,7 @@ background-color: #f3f2f0;
     color: #333333;
     text-align: center;
 }
+
 .main-box form {
     display: flex;
     flex-direction: column;
@@ -56,24 +57,29 @@ background-color: #f3f2f0;
     border-radius: 6px;
     min-width: 400px;
 }
+
 .main-box form .form-group {
     display: flex;
     flex-direction: column;
 }
+
 .main-box form .form-group label {
     font-size: 14px;
     margin-bottom: 6px;
     font-weight: 500;
 }
+
 .main-box form .form-group .form-control {
     height: 36px;
     padding-left: 16px;
     border: 1px solid #999999;
     margin-bottom: 16px;
 }
-.main-box form .form-group .form-control:focus{
+
+.main-box form .form-group .form-control:focus {
     outline: 0;
 }
+
 .btn-submit {
     background-color: #1877f2;
     color: #ffffff
@@ -81,54 +87,64 @@ background-color: #f3f2f0;
 
 .header {
     background-color: #ffffff;
-    box-shadow: 4px -2px 10px 0px rgba(0,0,0, 0.2);
+    box-shadow: 4px -2px 10px 0px rgba(0, 0, 0, 0.2);
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
 }
+
 .header-content .left {
     display: flex;
     align-items: center;
 }
-.header-content .left .form-control{
+
+.header-content .left .form-control {
     height: 40px;
     padding-left: 32px;
     border: 1px solid #999999;
-   margin-left: 16px;
-   background-color: #ecf3f8;
-   border: 0;
-   border-radius: 6px;
+    margin-left: 16px;
+    background-color: #ecf3f8;
+    border: 0;
+    border-radius: 6px;
 }
-.header-content .left .form-control:focus{
+
+.header-content .left .form-control:focus {
     outline: 0;
 }
+
 .header-content .left .search-box {
     height: 40px;
     position: relative;
 }
+
 .header-content .left .search-box span {
     position: absolute;
     top: 18%;
     left: 20px;
     color: #999999;
 }
+
 .header-content .left .logo img {
     height: 100%;
 }
+
 .header-content .right {
     display: flex;
     align-items: center;
 }
+
 .header-content .right ul {
     display: flex;
     list-style: none;
     height: 100%;
 }
+
 .header-content .right ul li {
     margin: 0 32px 0 0;
 }
+
 .header-content .right ul li a {
     text-decoration: none;
     display: flex;
@@ -137,23 +153,27 @@ background-color: #f3f2f0;
     justify-content: center;
     color: #666666;
     transition: 0.5s;
-    
+
 }
 
 .header-content .right ul li a:hover {
     color: #191919;
 }
-.header-content .right ul li a  span.text {
+
+.header-content .right ul li a span.text {
     font-size: 12px;
 }
-.header-content .right ul li a .profile_pic{
+
+.header-content .right ul li a .profile_pic {
     width: 30px;
     height: 30px;
 }
+
 .header-content .right ul li a .profile_pic img {
     width: 100%;
     height: 100%;
 }
+
 .header-content .right ul li.dropdown-li {
     position: relative;
 }
@@ -166,31 +186,35 @@ background-color: #f3f2f0;
     width: 220px;
     flex-direction: column;
     background-color: #ffffff;
-    box-shadow: 4px -2px 10px 0px rgba(0,0,0, 0.2);
+    box-shadow: 4px -2px 10px 0px rgba(0, 0, 0, 0.2);
     padding: 16px;
+    z-index: 9;
     display: none;
 }
+
 .header-content .right ul li.dropdown-li .dropdown-content.show {
     display: block;
 }
 
-.header-content .right ul li.dropdown-li .dropdown-content .user-details{
+.header-content .right ul li.dropdown-li .dropdown-content .user-details {
     display: flex;
     align-items: center;
     margin-bottom: 16px;
 }
+
 .header-content .right ul li.dropdown-li .dropdown-content .user-details .left {
     width: 50px;
     height: 50px;
     border-radius: 100%;
     margin-right: 16px;
 }
+
 .header-content .right ul li.dropdown-li .dropdown-content .user-details .left img {
     width: 100%;
     height: 100%;
 }
 
-.btn-tranaparent{
+.btn-tranaparent {
     display: block;
     width: 100%;
     color: #1877f2;
@@ -201,6 +225,7 @@ background-color: #f3f2f0;
     font-size: 14px;
     margin-bottom: 8px;
 }
+
 .btn-logout {
     display: block;
     width: 100%;
@@ -216,11 +241,12 @@ background-color: #f3f2f0;
     display: flex;
     flex-wrap: wrap;
 }
+
 .user-box {
     flex: 0 0 23%;
     margin: 8px 6px;
     background-color: #ffffff;
-    box-shadow: 4px -2px 10px 0px rgba(0,0,0, 0.2);
+    box-shadow: 4px -2px 10px 0px rgba(0, 0, 0, 0.2);
     position: relative;
     border-radius: 6px;
 }
@@ -228,26 +254,30 @@ background-color: #f3f2f0;
 .user-box .cover-img {
     height: 75px;
     background-color: #ededed;
-    background: url("../images/cover.jpg") no-repeat center center / cover ;
+    background: url("../images/cover.jpg") no-repeat center center / cover;
 }
-.user-box .profile-img{
+
+.user-box .profile-img {
     width: 75px;
     height: 75px;
     border-radius: 100%;
     margin: -45px auto 0;
 }
+
 .user-box .profile-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 100%;
 }
+
 .user-box .username {
     text-align: center;
     margin: 8px 0;
     font-weight: 500;
     text-transform: capitalize;
 }
+
 .user-box .connect-button .btn {
     width: 80%;
     margin: 0 auto 16px;
@@ -256,10 +286,12 @@ background-color: #f3f2f0;
     align-items: center;
     justify-content: center;
 }
+
 .user-box .connect-button .btn span {
     margin-right: 10px;
 }
-.user-box  .cross {
+
+.user-box .cross {
     position: absolute;
     width: 30px;
     height: 30px;
@@ -268,3 +300,66 @@ background-color: #f3f2f0;
     color: #ffffff;
     cursor: pointer;
 }
+
+/* Start CSS For My Friends Page*/
+.pending-request {
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.pending-request h3 {
+    text-align: center;
+}
+
+.pending-request-box {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ededed;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+}
+
+.pending-request-box .left {
+    display: flex;
+    align-items: center;
+}
+
+.pending-request-box .left .img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    margin-right: 16px;
+}
+
+.pending-request-box .left .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.pending-request-box .right {
+    display: flex;
+    align-items: center;
+}
+
+.pending-request-box .right .btn-add {
+    background: transparent;
+    color: #1877f2;
+    border: 2px solid #1877f2;
+    width: 120px;
+
+    border-radius: 31px;
+    font-weight: 500;
+}
+
+.pending-request-box .right .btn-remove {
+    width: 120px;
+    background-color: #1877f2;
+    color: #ffffff;
+    border-radius: 30px;
+}
+
+/* End CSS For My Friends Page*/

@@ -47,4 +47,7 @@ router.post("/send-friend-request", userController.sendFriendRequest);
 
 router.get("/friends", userController.friends);
 
+
+router.get("/friends/:id", userController.acceptFriendRequest)
+
 module.exports = router;

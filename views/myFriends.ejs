@@ -1,0 +1,50 @@
+<%- include('_header')%>
+<div class="container">
+    <div class="main-heading">
+        <h1>My Friends</h1>
+    </div>
+    <div class="pending-request">
+        
+            <h3>Pending Requests</h3>
+        
+        <% for (sender of senders) {%>
+            <div class="pending-request-box">
+            <div class="left">
+                 <div class="img">
+                    <img src="<%= sender.avatar%>" alt="profile" />
+                 </div>
+            <div class="username">
+                <%= sender.name%>
+            </div>
+            </div>
+            <div class="right">
+                <a href="/user/friends/<%= sender._id %>" class="btn btn-add btn-transparent">Add</a>
+                <button class="btn btn-remove">Remove</button>
+            </div> 
+        </div>
+        <% }%>
+
+       
+        
+    </div>
+    <div class="pending-request">
+        <h3>Friend List</h3>
+     <% for (friend of friends) { %>
+            <div class="pending-request-box">
+                
+                <div class="left">
+                    <div class="img">
+                        <img src="<%= friend.avatar%>" alt="profile" />
+                    </div>
+                    <div class="username">
+                        <%= friend.name %>
+                    </div>
+                </div>
+                <div class="right">
+
+                    <button class="btn btn-remove">Message</button>
+                </div>
+            </div>
+        <% }%>
+        </div>
+</div>
